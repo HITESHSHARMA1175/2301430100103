@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
-      port: 3000
+      port: 3001
     },
     define: {
       'import.meta.env.VITE_ACCESS_TOKEN': JSON.stringify(env.ACCESS_TOKEN)
