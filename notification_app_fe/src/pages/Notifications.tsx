@@ -16,13 +16,22 @@ export default function Notifications() {
     fetchData();
   }, [filterType, page]);
 
+  const [errorMsg, setErrorMsg] = useState('');
+
   const fetchData = async () => {
     setLoading(true);
+    setErrorMsg('');
     try {
-      const data = await getNotifications(page, limit, filterType || undefined);
-      setNotifications(data);
-    } catch (err) {
+      let data;
+      if (filterType) {
+        data = await getNotifications(undefined, undefined, filterType);
+      } else {
+        data = await getNotifications(page, limit, undefined);
+      }
+      setNotifications(data || []);
+    } catch (err: any) {
       console.error("Failed to fetch notifications", err);
+      setErrorMsg(err.message || JSON.stringify(err));
     } finally {
       setLoading(false);
     }
@@ -45,6 +54,8 @@ export default function Notifications() {
         <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
           <CircularProgress />
         </Box>
+      ) : errorMsg ? (
+        <Typography color="error">{errorMsg}</Typography>
       ) : notifications.length === 0 ? (
         <Typography color="text.secondary">No notifications found.</Typography>
       ) : (
