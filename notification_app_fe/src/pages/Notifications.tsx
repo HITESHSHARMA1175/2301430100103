@@ -10,7 +10,7 @@ export default function Notifications() {
   const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState('');
   const [page, setPage] = useState(1);
-  const limit = 20;
+  const limit = 10;
 
   useEffect(() => {
     fetchData();
