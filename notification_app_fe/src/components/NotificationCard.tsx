@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
-import { CheckCircleOutline, FiberNew } from '@mui/icons-material';
-import { Notification } from '../services/api';
+import { CheckCircleOutlined, FiberNew } from '@mui/icons-material';
+import type { Notification } from '../services/api';
 
 interface Props {
   notification: Notification;
@@ -46,8 +46,8 @@ export default function NotificationCard({ notification, rank }: Props) {
       }}
     >
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-          <Box display="flex" alignItems="center" gap={1}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             {rank && <Typography variant="h6" color="text.secondary">#{rank}</Typography>}
             <Chip 
               label={notification.Type} 
@@ -55,9 +55,9 @@ export default function NotificationCard({ notification, rank }: Props) {
               size="small" 
             />
           </Box>
-          <Box display="flex" alignItems="center" gap={1}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             {viewed ? (
-              <Chip icon={<CheckCircleOutline />} label="Viewed Notification" size="small" variant="outlined" color="default" />
+              <Chip icon={<CheckCircleOutlined />} label="Viewed Notification" size="small" variant="outlined" color="default" />
             ) : (
               <Chip icon={<FiberNew />} label="New Notification" size="small" color="info" />
             )}

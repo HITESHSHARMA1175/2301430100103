@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Container, Typography, CircularProgress, Box } from '@mui/material';
-import { getNotifications, Notification } from '../services/api';
+import { getNotifications } from '../services/api';
+import type { Notification } from '../services/api';
 import NotificationCard from '../components/NotificationCard';
 
 export default function PriorityInbox() {
@@ -50,7 +51,7 @@ export default function PriorityInbox() {
       </Box>
 
       {loading ? (
-        <Box display="flex" justifyContent="center" mt={4}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
           <CircularProgress />
         </Box>
       ) : notifications.length === 0 ? (

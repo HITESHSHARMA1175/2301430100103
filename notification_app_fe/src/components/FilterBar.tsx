@@ -1,4 +1,5 @@
-import { FormControl, InputLabel, Select, MenuItem, Box, SelectChangeEvent } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
+import type { SelectChangeEvent } from '@mui/material';
 
 interface Props {
   selectedType: string;
