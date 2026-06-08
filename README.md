@@ -34,13 +34,11 @@ This repository contains the complete assessment solution for the Notification S
 
 ## Screenshots
 
-*(Save your screenshot images in a `screenshots` folder and replace the placeholders below)*
-
 ### All Notifications
-![All Notifications](./screenshots/all-notifications.png)
+![All Notifications](./sreenshort/all-notifications.png)
 
 ### Filtered Notifications
-![Filtered Notifications](./screenshots/filtered-notifications.png)
+![Filtered Notifications](./sreenshort/filtered-notifications.png)
 
 ### Priority Inbox
-![Priority Inbox](./screenshots/priority-inbox.png)
+![Priority Inbox](./sreenshort/priority-inbox.png)
