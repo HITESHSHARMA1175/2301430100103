@@ -1,38 +1,37 @@
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import CreateNotification from './pages/CreateNotification';
-import NotificationList from './pages/NotificationList';
-import NotificationDetails from './pages/NotificationDetails';
-import { Log } from 'logging_middleware';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import Navbar from './components/Navbar';
+import Notifications from './pages/Notifications';
+import PriorityInbox from './pages/PriorityInbox';
 
-function Navigation() {
-  const location = useLocation();
-
-  useEffect(() => {
-    Log('frontend', 'info', 'notification_app_fe', `Navigated to ${location.pathname}`);
-  }, [location]);
-
-  return (
-    <nav>
-      <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Notifications</Link>
-      <Link to="/create" className={location.pathname === '/create' ? 'active' : ''}>Create New</Link>
-    </nav>
-  );
-}
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#1976d2',
+    },
+    background: {
+      default: '#f5f5f5',
+    }
+  },
+  typography: {
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+  }
+});
 
 function App() {
   return (
-    <Router>
-      <div className="app-container">
-        <h1 className="header">Notification Center</h1>
-        <Navigation />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<NotificationList />} />
-          <Route path="/create" element={<CreateNotification />} />
-          <Route path="/notifications/:id" element={<NotificationDetails />} />
+          <Route path="/" element={<Navigate to="/notifications" replace />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/priority-inbox" element={<PriorityInbox />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 }
 
